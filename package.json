@@ -1,7 +1,7 @@
 {
   "name": "npm-audit-ci-wrapper",
-  "version": "1.0.1",
-  "description": "A wrapper for 'npm audit' which can be configurable for us in a CI/CD tool like Jenkins",
+  "version": "1.0.2",
+  "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
