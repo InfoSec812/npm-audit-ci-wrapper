@@ -49,13 +49,7 @@ const options = [
 let args = argv.option( options ).run();
 
 // Check to see if this script should ignore dev dependencies
-let ignoreDev = false;
-
-if (args.options.hasOwnProperty('ignore-dev-dependencies')) { // IF the argument was passed
-  if (args.options['ignore-dev-dependencies']) {              // IF the argument was set to TRUE
-    ignoreDev = true;
-  }
-}
+let ignoreDev = (args.options.hasOwnProperty('ignore-dev-dependencies') && args.options['ignore-dev-dependencies']);
 
 // Define which threshold this script should cause a non-zero exit status
 let threshold = 3;
