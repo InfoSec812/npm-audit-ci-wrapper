@@ -36,6 +36,13 @@ const options = [
     type: 'boolean',
     description: 'Tells the tool to ignore dev dependencies and only fail the build on runtime dependencies which exceed the threshold',
     example: "'npm-audit-ci-wrapper -p' or 'npm-audit-ci-wrapper --ignore-dev-dependencies'"
+  },
+  {
+    name: 'json',
+    short: 'j',
+    type: 'boolean',
+    description: 'Do not fail, just output the filtered JSON data which matches the specified threshold/scope',
+    example: "'npm-audit-ci-wrapper --threshold=high -p --json' or 'npm-audit-ci-wrapper -j'"
   }
 ];
 
@@ -75,21 +82,27 @@ exec('npm audit --json', (err, stdout, stderr) => {
     }).filter((advisory, idx) => {                                  // Filter advisories which are below the selected threshold
       return (validThresholds.indexOf(advisory[1].severity) >= threshold);
     });
-
-    let exitCode = 0;
-    if (flaggedDepenencies.length > 0) {
-      console.log('There are vulnerable dependencies which exceed the selected threshold and scope:')
-      exitCode = 1;
+    
+    if (args.options.hasOwnProperty('json') && args.options.json) {
+      var retVal = data;
+      retVal.advisories = {};
+      retVal.advisories = flaggedDepenencies;
+      console.log(JSON.stringify(retVal));
+    } else {
+      let exitCode = 0;
+      if (flaggedDepenencies.length > 0) {
+        console.log('There are vulnerable dependencies which exceed the selected threshold and scope:');
+        exitCode = 1;
+      }
+      flaggedDepenencies.forEach((advisory) => {                      // Print out dependencies which exceed the threshold
+        let libraryName = advisory[1].module_name;
+        let libraryVersion = advisory[1].findings[0].version;
+        let advisoryOverview = 'https://www.npmjs.com/advisories/' + advisory[0];
+        let severity = advisory[1].severity;
+        console.log(util.format("    %s(%s): %s (%s >= %s)", libraryName.padStart(30), libraryVersion.padEnd(20), advisoryOverview.padEnd(50), severity, validThresholds[threshold]));
+      });
+      
+      process.exit(exitCode);
     }
-    
-    flaggedDepenencies.forEach((advisory) => {                      // Print out dependencies which exceed the threshold
-      let libraryName = advisory[1].module_name;
-      let libraryVersion = advisory[1].findings[0].version;
-      let advisoryOverview = 'https://www.npmjs.com/advisories/' + advisory[0];
-      let severity = advisory[1].severity;
-      console.log(util.format("    %s(%s): %s (%s >= %s)", libraryName.padStart(30), libraryVersion.padEnd(20), advisoryOverview.padEnd(50), severity, validThresholds[threshold]));
-    });
-    
-    process.exit(exitCode);
   }
 });
