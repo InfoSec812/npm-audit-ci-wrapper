@@ -52,21 +52,23 @@ let args = argv.option( options ).run();
 let ignoreDev = (args.options.hasOwnProperty('ignore-dev-dependencies') && args.options['ignore-dev-dependencies']);
 
 // Define which threshold this script should cause a non-zero exit status
-let threshold = 3;
-let formattedThreshold = validThresholds.indexOf('critical');
+let formattedThreshold = 'critical';
+let threshold = validThresholds.indexOf('critical');
 
-if (args.options.hasOwnProperty('threshold')) {               // IF the argument was passed
-  formattedThreshold = args.options.threshold.toLocaleLowerCase();
-  if (validThresholds.indexOf(formattedThreshold) > -1) {   // IF the argument is a valid option
-    threshold = validThresholds.indexOf(formattedThreshold);         // Set the threshold
-  }
+if (
+      args.options.hasOwnProperty('threshold') && 
+      validThresholds.indexOf(args.options.threshold.toLocaleLowerCase()) > -1
+    ) {
+  threshold = validThresholds.indexOf(args.options.threshold.toLocaleLowerCase()); // Set the threshold
 }
 
 // Execute `npm audit --json` and capture the output for processing
 exec('npm audit --json', (err, stdout, stderr) => {
+  let exitCode = 0;
   if (err === null) {
     console.log('An unexpected error has occurred')
     console.log(stderr);
+    exitCode = 255;
   } else {
     let data = JSON.parse(stdout);
     let advisories = Object.entries(data.advisories);
@@ -76,14 +78,14 @@ exec('npm audit --json', (err, stdout, stderr) => {
     }).filter((advisory, idx) => {                                  // Filter advisories which are below the selected threshold
       return (validThresholds.indexOf(advisory[1].severity) >= threshold);
     });
-    
+
+    // If `-j` or `--json` passed, return the json data with the appropriate filters applied
     if (args.options.hasOwnProperty('json') && args.options.json) {
       var retVal = data;
       retVal.advisories = {};
       retVal.advisories = flaggedDepenencies;
       console.log(JSON.stringify(retVal));
-    } else {
-      let exitCode = 0;
+    } else { // If any vulnerabilities exceed the threshold and are not filtered, print the details and fail the build.
       if (flaggedDepenencies.length > 0) {
         console.log('There are vulnerable dependencies which exceed the selected threshold and scope:');
         exitCode = 1;
@@ -95,8 +97,7 @@ exec('npm audit --json', (err, stdout, stderr) => {
         let severity = advisory[1].severity;
         console.log(util.format("    %s(%s): %s (%s >= %s)", libraryName.padStart(30), libraryVersion.padEnd(20), advisoryOverview.padEnd(50), severity, validThresholds[threshold]));
       });
-      
-      process.exit(exitCode);
     }
   }
+  process.exit(exitCode);
 });
