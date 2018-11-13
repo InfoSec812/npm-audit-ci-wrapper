@@ -31,4 +31,8 @@ Usage: npm-audit-ci-wrapper [options]
 	--ignore-dev-dependencies, -p
 		Tells the tool to ignore dev dependencies and only fail the build on runtime dependencies which exceed the threshold
 		'npm-audit-ci-wrapper -p' or 'npm-audit-ci-wrapper --ignore-dev-dependencies'
+
+	--json, -j
+		Do not fail, just output the filtered JSON data which matches the specified threshold/scope
+		'npm-audit-ci-wrapper --threshold=high -p --json' or 'npm-audit-ci-wrapper -j'
 ```
