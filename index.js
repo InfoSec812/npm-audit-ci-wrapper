@@ -43,8 +43,16 @@ const options = [
     type: 'boolean',
     description: 'Do not fail, just output the filtered JSON data which matches the specified threshold/scope',
     example: "'npm-audit-ci-wrapper --threshold=high -p --json' or 'npm-audit-ci-wrapper -j'"
+  },
+  {
+    name: 'registry',
+    short: 'r',
+    type: 'string',
+    description: 'Submit the dependency report to and get the list of vulnerabilities from this npm registry. Useful when your default npm regsitry (i.e. npm config set registry) does not support the npm audit command.',
+    example: "'npm-audit-ci-wrapper --registry=https://registry.npmjs.org/'"
   }
 ];
+
 
 let args = argv.option( options ).run();
 
@@ -62,8 +70,19 @@ if (
   threshold = validThresholds.indexOf(args.options.threshold.toLocaleLowerCase()); // Set the threshold
 }
 
-// Execute `npm audit --json` and capture the output for processing
-exec('npm audit --json', (err, stdout, stderr) => {
+if ( args.options.hasOwnProperty('registry') ) {
+  registry = args.options.registry; // Set the registry
+}
+
+// Build the npm audit command
+command = 'npm audit --json'
+if( typeof registry !== 'undefined' ) {
+  command += ' --registry=' + registry
+}
+
+//
+// Execute and capture the output for processing
+exec(command, (err, stdout, stderr) => {
   let exitCode = 0;
   if (err === null) {
     console.log('An unexpected error has occurred')
