@@ -85,9 +85,7 @@ if( typeof registry !== 'undefined' ) {
 exec(command, (err, stdout, stderr) => {
   let exitCode = 0;
   if (err === null) {
-    console.log('An unexpected error has occurred')
-    console.log(stderr);
-    exitCode = 255;
+    console.log('No vulnerabilities found.')
   } else {
     let data = JSON.parse(stdout);
     let advisories = Object.entries(data.advisories);
