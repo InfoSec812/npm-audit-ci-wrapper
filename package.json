@@ -4,7 +4,8 @@
   "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
   "main": "index.js",
   "scripts": {
-    "test": "jest --collect-coverage"
+    "test": "jest --collect-coverage",
+    "sonar": "sonar-scanner -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$(cat ~/.sonar_token)"
   },
   "author": "Deven Phillips <deven.phillips@redhat.com>",
   "repository": {
