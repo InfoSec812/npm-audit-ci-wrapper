@@ -4,3 +4,4 @@ coverage
 coverage/**
 unit-test-reports
 unit-test-reports/**
+node_modules

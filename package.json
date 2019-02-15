@@ -1,11 +1,11 @@
 {
   "name": "npm-audit-ci-wrapper",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
   "main": "index.js",
   "scripts": {
     "test": "jest --collect-coverage",
-    "sonar": "sonar-scanner -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$(cat ~/.sonar_token)"
+    "sonar": "sonar-scanner -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$(cat ~/.sonar_token) -Dsonar.projectVersion=$npm_package_version"
   },
   "author": "Deven Phillips <deven.phillips@redhat.com>",
   "repository": {
