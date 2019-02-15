@@ -19,8 +19,6 @@
     "npm-audit-ci-wrapper": "./bin/index.js"
   },
   "devDependencies": {
-    "babel-jest": "^24.1.0",
-    "jest": "^24.1.0",
-    "jest-html-reporter": "^2.4.4"
+    "jest": "^24.1.0"
   }
 }

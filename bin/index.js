@@ -20,15 +20,11 @@ const { exec } = require('child_process');
 const { parse_audit_results } = require('../lib/parser');
 const { parse_args } = require('../lib/parse_args');
 
-const { threshold, ignoreDev, json_output } = parse_args();
-
-if ( args.options.hasOwnProperty('registry') ) {
-  registry = args.options.registry; // Set the registry
-}
+const { threshold, ignoreDev, json_output, registry } = parse_args();
 
 // Build the npm audit command
 command = 'npm audit --json'
-if( typeof registry !== 'undefined' ) {
+if( registry !== null ) {
   command += ' --registry=' + registry
 }
 
