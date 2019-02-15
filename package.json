@@ -17,5 +17,8 @@
   },
   "bin": {
     "npm-audit-ci-wrapper": "./index.js"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0"
   }
 }
