@@ -1,0 +1,316 @@
+{
+  "advisories": {
+    "146": {
+      "findings": [
+        {
+          "version": "1.9.2",
+          "paths": [
+            "@vue/cli-plugin-e2e-nightwatch>nightwatch>mocha-nightwatch>growl"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 146,
+      "created": "2016-09-06T12:49:40.000Z",
+      "updated": "2018-03-02T21:07:28.071Z",
+      "deleted": null,
+      "title": "Command Injection",
+      "found_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "reported_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "module_name": "growl",
+      "cves": [
+        "CVE-2017-16042"
+      ],
+      "vulnerable_versions": "<1.10.2",
+      "patched_versions": ">=1.10.2",
+      "overview": "Affected versions of `growl` do not properly sanitize input prior to passing it into a shell command, allowing for arbitrary command execution.",
+      "recommendation": "Update to version 1.10.2 or later.",
+      "references": "[Issue #60](https://github.com/tj/node-growl/issues/60)\n[PR #61](https://github.com/tj/node-growl/pull/61)",
+      "access": "public",
+      "severity": "critical",
+      "cwe": "CWE-94",
+      "metadata": {
+        "module_type": "CLI.Library",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/146"
+    },
+    "534": {
+      "findings": [
+        {
+          "version": "2.2.0",
+          "paths": [
+            "@vue/cli-plugin-e2e-nightwatch>nightwatch>mocha-nightwatch>debug"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 534,
+      "created": "2017-09-25T18:55:55.956Z",
+      "updated": "2018-05-16T19:37:43.686Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "reported_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "module_name": "debug",
+      "cves": [
+        "CVE-2017-16137"
+      ],
+      "vulnerable_versions": "<= 2.6.8 || >= 3.0.0 <= 3.0.1",
+      "patched_versions": ">= 2.6.9 < 3.0.0 || >= 3.1.0",
+      "overview": "Affected versions of `debug` are vulnerable to regular expression denial of service when untrusted user input is passed into the `o` formatter. \n\nAs it takes 50,000 characters to block the event loop for 2 seconds, this issue is a low severity issue.",
+      "recommendation": "Version 2.x.x: Update to version 2.6.9 or later.\nVersion 3.x.x: Update to version 3.1.0 or later.\n",
+      "references": "- [Issue #501](https://github.com/visionmedia/debug/issues/501)\n- [PR #504](https://github.com/visionmedia/debug/pull/504)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/534"
+    },
+    "593": {
+      "findings": [
+        {
+          "version": "1.0.0",
+          "paths": [
+            "@vue/cli-plugin-e2e-nightwatch>nightwatch>proxy-agent>https-proxy-agent",
+            "@vue/cli-plugin-e2e-nightwatch>nightwatch>proxy-agent>pac-proxy-agent>https-proxy-agent"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 593,
+      "created": "2018-04-24T15:54:57.432Z",
+      "updated": "2018-04-24T15:55:49.931Z",
+      "deleted": null,
+      "title": "Denial of Service",
+      "found_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "reported_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "module_name": "https-proxy-agent",
+      "cves": [],
+      "vulnerable_versions": "<=2.1.1",
+      "patched_versions": ">=2.2.0",
+      "overview": "Versions of `https-proxy-agent` before 2.2.0 are vulnerable to denial of service. This is due to unsanitized options (proxy.auth) being passed to `Buffer()`.",
+      "recommendation": "Update to version 2.2.0 or later.",
+      "references": "- [index.js Line 207](https://github.com/TooTallNate/node-https-proxy-agent/blob/2.1.1/index.js#L207)\n- [HackerOne Report](https://hackerone.com/reports/319532)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-20",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/593"
+    },
+    "607": {
+      "findings": [
+        {
+          "version": "1.0.0",
+          "paths": [
+            "@vue/cli-plugin-e2e-nightwatch>nightwatch>proxy-agent>http-proxy-agent",
+            "@vue/cli-plugin-e2e-nightwatch>nightwatch>proxy-agent>pac-proxy-agent>http-proxy-agent"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 607,
+      "created": "2018-04-24T22:28:57.482Z",
+      "updated": "2018-04-24T22:28:57.482Z",
+      "deleted": null,
+      "title": "Denial of Service",
+      "found_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "reported_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "module_name": "http-proxy-agent",
+      "cves": [],
+      "vulnerable_versions": "<=2.0.0",
+      "patched_versions": ">=2.1.0",
+      "overview": "Versions of `http-proxy-agent` before 2.1.0 are vulnerable to denial of service and uninitialized memory leak when unsanitized options are passed to `Buffer`.",
+      "recommendation": "Update to version 2.1.0 or later.",
+      "references": "- https://github.com/TooTallNate/node-http-proxy-agent/blob/2.0.0/index.js#L80\n- [HackerOne Report](https://hackerone.com/reports/321631)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-20",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/607"
+    },
+    "722": {
+      "findings": [
+        {
+          "version": "1.2.0",
+          "paths": [
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>jest-haste-map>sane>exec-sh>merge",
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>jest-haste-map>sane>watch>exec-sh>merge",
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>jest-runner>jest-haste-map>sane>exec-sh>merge",
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>jest-runner>jest-haste-map>sane>watch>exec-sh>merge",
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>jest-runner>jest-runtime>jest-haste-map>sane>exec-sh>merge",
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>jest-runner>jest-runtime>jest-haste-map>sane>watch>exec-sh>merge",
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>jest-runtime>jest-haste-map>sane>exec-sh>merge",
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>jest-runtime>jest-haste-map>sane>watch>exec-sh>merge",
+            "jest-cucumber>jest>jest-cli>jest-haste-map>sane>exec-sh>merge",
+            "jest-cucumber>jest>jest-cli>jest-haste-map>sane>watch>exec-sh>merge",
+            "jest-cucumber>jest>jest-cli>jest-runner>jest-haste-map>sane>exec-sh>merge",
+            "jest-cucumber>jest>jest-cli>jest-runner>jest-haste-map>sane>watch>exec-sh>merge",
+            "jest-cucumber>jest>jest-cli>jest-runner>jest-runtime>jest-haste-map>sane>exec-sh>merge",
+            "jest-cucumber>jest>jest-cli>jest-runner>jest-runtime>jest-haste-map>sane>watch>exec-sh>merge",
+            "jest-cucumber>jest>jest-cli>jest-runtime>jest-haste-map>sane>exec-sh>merge",
+            "jest-cucumber>jest>jest-cli>jest-runtime>jest-haste-map>sane>watch>exec-sh>merge"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 722,
+      "created": "2018-11-05T17:04:20.221Z",
+      "updated": "2019-02-14T15:59:51.541Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "link": "",
+        "name": "asgerf"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "asgerf"
+      },
+      "module_name": "merge",
+      "cves": [
+        "CVE-2018-16469"
+      ],
+      "vulnerable_versions": "<=1.2.0",
+      "patched_versions": ">=1.2.1",
+      "overview": "Versions of `merge` before 1.2.1 are vulnerable to prototype pollution. The `merge.recursive` function can be tricked into adding or modifying properties of the Object prototype.",
+      "recommendation": "Update to version 1.2.1 or later.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/381194)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 2,
+        "affected_components": "recursive function"
+      },
+      "url": "https://npmjs.com/advisories/722"
+    },
+    "725": {
+      "findings": [
+        {
+          "version": "3.1.9",
+          "paths": [
+            "@vue/cli-service>webpack-dev-server"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 725,
+      "created": "2018-11-07T17:10:22.191Z",
+      "updated": "2019-01-02T15:46:44.616Z",
+      "deleted": null,
+      "title": "Missing Origin Validation",
+      "found_by": {
+        "link": "https://blog.cal1.cn/link",
+        "name": "Jiantao Li"
+      },
+      "reported_by": {
+        "link": "https://blog.cal1.cn/link",
+        "name": "Jiantao Li"
+      },
+      "module_name": "webpack-dev-server",
+      "cves": [
+        "CVE-2018-14732"
+      ],
+      "vulnerable_versions": "<=3.1.10",
+      "patched_versions": ">=3.1.11",
+      "overview": "Versions of `webpack-dev-server` before 3.1.10 are missing origin validation on the websocket server. This vulnerability allows a remote attacker to steal a developer's source code because the origin of requests to the websocket server that is used for Hot Module Replacement (HMR) are not validated.",
+      "recommendation": "Update to version 3.1.11 or later.",
+      "references": "- [Sniffing Codes in Hot Module Reloading Messages\n](https://blog.cal1.cn/post/Sniffing%20Codes%20in%20Hot%20Module%20Reloading%20Messages)\n- [GitHub commit](https://github.com/webpack/webpack-dev-server/commit/f18e5adf123221a1015be63e1ca2491ca45b8d10)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-346",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/725"
+    },
+    "755": {
+      "findings": [
+        {
+          "version": "4.0.12",
+          "paths": [
+            "@vue/cli-plugin-unit-jest>jest>jest-cli>istanbul-api>istanbul-reports>handlebars",
+            "jest-cucumber>jest>jest-cli>istanbul-api>istanbul-reports>handlebars"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 755,
+      "created": "2018-12-28T20:34:57.708Z",
+      "updated": "2019-02-14T15:59:44.104Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "link": "",
+        "name": "Mahmoud Gamal, Matías Lang"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Mahmoud Gamal, Matías Lang"
+      },
+      "module_name": "handlebars",
+      "cves": [],
+      "vulnerable_versions": "<=4.0.12",
+      "patched_versions": ">=4.0.13",
+      "overview": "All versions of `handlebars` are vulnerable to Prototype Pollusion. Templates may alter an Objects' prototype, thus allowing an attacker to execute arbitrary code on the server.",
+      "recommendation": "Upgrade to version `4.0.13` or later.",
+      "references": "",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 6,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/755"
+    }
+  }
+}

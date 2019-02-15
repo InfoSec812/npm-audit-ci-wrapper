@@ -4,7 +4,7 @@
   "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --collect-coverage"
   },
   "author": "Deven Phillips <deven.phillips@redhat.com>",
   "repository": {
@@ -16,9 +16,11 @@
     "argv": "0.0.2"
   },
   "bin": {
-    "npm-audit-ci-wrapper": "./index.js"
+    "npm-audit-ci-wrapper": "./bin/index.js"
   },
   "devDependencies": {
-    "jest": "^24.1.0"
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "jest-html-reporter": "^2.4.4"
   }
 }
