@@ -83,6 +83,10 @@ if( typeof registry !== 'undefined' ) {
 //
 // Execute and capture the output for processing
 exec(command, {maxBuffer: 500 * 1024}, (err, stdout, stderr) => {
+  process.exit(parse_audit_results(err, stdout, stderr, threshold, ignoreDev));
+});
+
+function parse_audit_results(err, stdout, thresholdLocal, ignoreDevLocal) {
   let exitCode = 0;
   if (err === null) {
     console.log('No vulnerabilities found.')
@@ -91,9 +95,9 @@ exec(command, {maxBuffer: 500 * 1024}, (err, stdout, stderr) => {
     let advisories = Object.entries(data.advisories);
 
     let flaggedDepenencies = advisories.filter((advisory, idx) => { // Filter dev dependecies if that option is selected
-      return (!(advisory[1].findings[0].dev && ignoreDev));
+      return (!(advisory[1].findings[0].dev && ignoreDevLocal));
     }).filter((advisory, idx) => {                                  // Filter advisories which are below the selected threshold
-      return (validThresholds.indexOf(advisory[1].severity) >= threshold);
+      return (validThresholds.indexOf(advisory[1].severity) >= thresholdLocal);
     });
 
     // If `-j` or `--json` passed, return the json data with the appropriate filters applied
@@ -112,9 +116,11 @@ exec(command, {maxBuffer: 500 * 1024}, (err, stdout, stderr) => {
         let libraryVersion = advisory[1].findings[0].version;
         let advisoryOverview = 'https://www.npmjs.com/advisories/' + advisory[0];
         let severity = advisory[1].severity;
-        console.log(util.format("    %s(%s): %s (%s >= %s)", libraryName.padStart(30), libraryVersion.padEnd(20), advisoryOverview.padEnd(50), severity, validThresholds[threshold]));
+        console.log(util.format("    %s(%s): %s (%s >= %s)", libraryName.padStart(30), libraryVersion.padEnd(20), advisoryOverview.padEnd(50), severity, validThresholds[thresholdLocal]));
       });
     }
   }
-  process.exit(exitCode);
-});
+  return exitCode;
+}
+
+module.exports = parse_audit_results;
