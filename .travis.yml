@@ -8,3 +8,10 @@ deploy:
   on:
     branch: master
   tag: next
+addons:
+  sonarcloud:
+    organization: "infosec812-github" # the key of the org you chose at step #3
+    token: "${SONAR_TOKEN}"
+script:
+  - npm run test
+  - sonar-scanner
