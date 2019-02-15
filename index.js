@@ -82,7 +82,7 @@ if( typeof registry !== 'undefined' ) {
 
 //
 // Execute and capture the output for processing
-exec(command, (err, stdout, stderr) => {
+exec(command, {maxBuffer: 500 * 1024}, (err, stdout, stderr) => {
   let exitCode = 0;
   if (err === null) {
     console.log('No vulnerabilities found.')
