@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/InfoSec812/npm-audit-ci-wrapper.svg?branch=master)](https://travis-ci.com/InfoSec812/npm-audit-ci-wrapper)
 ![https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=alert_status)
-[![Coverage](https://sonarcloud.io/api/badges/measure?key=your.project.key&metric=coverage)](https://sonarcloud.io/component_measures?id=your.project.key&metric=coverage)
+[![Coverage](https://sonarcloud.io/api/badges/measure?key=com.zanclus%3Anpm-audit-ci-wrapper&metric=coverage)](https://sonarcloud.io/component_measures?id=com.zanclus%3Anpm-audit-ci-wrapper&metric=coverage)
 
 
 This utility is a wrapper around `npm audit --json` which allows for finer grained control over what
