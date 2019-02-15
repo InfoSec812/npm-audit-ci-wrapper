@@ -1,5 +1,7 @@
 # NPM Audit Continuous Integration Wrapper
 
+[![Build Status](https://travis-ci.com/InfoSec812/npm-audit-ci-wrapper.svg?branch=master)](https://travis-ci.com/InfoSec812/npm-audit-ci-wrapper)
+
 This utility is a wrapper around `npm audit --json` which allows for finer grained control over what
 will cause a CI build to fail. Options include setting the severity threshold and ignoring dev dependencies.
 
