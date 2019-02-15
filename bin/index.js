@@ -31,5 +31,7 @@ if( registry !== null ) {
 //
 // Execute and capture the output for processing
 exec(command, {maxBuffer: 500 * 1024}, (err, stdout, stderr) => {
-  process.exit(parse_audit_results(err, stdout, stderr, threshold, ignoreDev, json_output));
+  const { exitCode, cli_output } = parse_audit_results(err, stdout, threshold, ignoreDev, json_output);
+  console.log(cli_output);
+  process.exit(exitCode);
 });
