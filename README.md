@@ -1,6 +1,11 @@
 # NPM Audit Continuous Integration Wrapper
 
 [![Build Status](https://travis-ci.com/InfoSec812/npm-audit-ci-wrapper.svg?branch=master)](https://travis-ci.com/InfoSec812/npm-audit-ci-wrapper)
+![https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=alert_status)
+![https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=coverage)
+![https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=bugs)
+![https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=sqale_index)
+
 
 This utility is a wrapper around `npm audit --json` which allows for finer grained control over what
 will cause a CI build to fail. Options include setting the severity threshold and ignoring dev dependencies.
