@@ -7,3 +7,5 @@ unit-test-reports/**
 node_modules
 .scannerwork
 .scannerwork/**
+reports
+reports/**
