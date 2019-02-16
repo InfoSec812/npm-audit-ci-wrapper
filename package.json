@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --collect-coverage",
-    "sonar": "sonar-scanner -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$(cat ~/.sonar_token) -Dsonar.projectVersion=$npm_package_version"
+    "sonar": "sonar-scanner -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$(cat ~/.sonar_token) -Dsonar.projectVersion=$npm_package_version",
+    "stryker": "node_modules/stryker-cli/bin/stryker-cli run"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["<rootDir>/.stryker-tmp/"],
+    "testMatch": ["**/?(*.)+(spec|test).[jt]s?(x)"]
   },
   "author": "Deven Phillips <deven.phillips@redhat.com>",
   "repository": {
@@ -26,6 +31,7 @@
     "@stryker-mutator/jest-runner": "^1.0.2",
     "capture-stdout": "^1.0.0",
     "jest": "^24.1.0",
+    "stryker-cli": "^1.0.0",
     "stryker-jest-runner": "^1.4.1"
   }
 }
