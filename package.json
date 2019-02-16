@@ -1,11 +1,16 @@
 {
   "name": "npm-audit-ci-wrapper",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
   "main": "index.js",
   "scripts": {
     "test": "jest --collect-coverage",
-    "sonar": "sonar-scanner -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$(cat ~/.sonar_token) -Dsonar.projectVersion=$npm_package_version"
+    "sonar": "sonar-scanner -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=$(cat ~/.sonar_token) -Dsonar.projectVersion=$npm_package_version",
+    "stryker": "node_modules/stryker-cli/bin/stryker-cli run"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["<rootDir>/.stryker-tmp/"],
+    "testMatch": ["**/?(*.)+(spec|test).[jt]s?(x)"]
   },
   "author": "Deven Phillips <deven.phillips@redhat.com>",
   "repository": {
@@ -20,6 +25,13 @@
     "npm-audit-ci-wrapper": "./bin/index.js"
   },
   "devDependencies": {
-    "jest": "^24.1.0"
+    "@stryker-mutator/core": "^1.0.2",
+    "@stryker-mutator/html-reporter": "^1.0.2",
+    "@stryker-mutator/javascript-mutator": "^1.0.2",
+    "@stryker-mutator/jest-runner": "^1.0.2",
+    "capture-stdout": "^1.0.0",
+    "jest": "^24.1.0",
+    "stryker-cli": "^1.0.0",
+    "stryker-jest-runner": "^1.4.1"
   }
 }
