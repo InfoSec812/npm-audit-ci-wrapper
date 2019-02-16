@@ -18,9 +18,14 @@
 
 const { exec } = require('child_process');
 const { parse_audit_results } = require('../lib/parser');
-const { parse_args } = require('../lib/parse_args');
+const { parse_args, validThresholds, check_npm_version } = require('../lib/parse_args');
 
 const { threshold, ignoreDev, json_output, registry } = parse_args();
+
+if (!check_npm_version()) {
+  console.error('NPM Version does not support npm audit. Install a version >= 6.0.0');
+  process.exit(1);
+}
 
 // Build the npm audit command
 command = 'npm audit --json'
