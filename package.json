@@ -20,6 +20,12 @@
     "npm-audit-ci-wrapper": "./bin/index.js"
   },
   "devDependencies": {
-    "jest": "^24.1.0"
+    "@stryker-mutator/core": "^1.0.2",
+    "@stryker-mutator/html-reporter": "^1.0.2",
+    "@stryker-mutator/javascript-mutator": "^1.0.2",
+    "@stryker-mutator/jest-runner": "^1.0.2",
+    "capture-stdout": "^1.0.0",
+    "jest": "^24.1.0",
+    "stryker-jest-runner": "^1.4.1"
   }
 }
