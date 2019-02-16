@@ -9,3 +9,7 @@ node_modules
 .scannerwork/**
 reports
 reports/**
+.stryker-tmp
+.stryker-tmp/**
+.sonarlint
+.sonarlint/**
