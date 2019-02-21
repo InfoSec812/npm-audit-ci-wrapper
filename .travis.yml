@@ -2,12 +2,20 @@ language: node_js
 node_js:
 - node
 deploy:
-  provider: npm
-  email: "deven.phillips@gmail.com"
-  api_key: "$API_TOKEN"
-  on:
-    branch: master
-  tag: latest
+  - provider: npm
+    email: "deven.phillips@gmail.com"
+    api_key: "$API_TOKEN"
+    on:
+      branch: master
+    tag: latest
+  - provider: releases
+    api_key: "${GITHUB_TOKEN}"
+    file:
+      - "reports/mutation/html/*"
+      - "coverage/*"
+      - "unit-test-reports/*"
+    on:
+      branch: master
 addons:
   sonarcloud:
     organization: "infosec812-github" # the key of the org you chose at step #3
