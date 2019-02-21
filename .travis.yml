@@ -14,6 +14,8 @@ deploy:
       - "reports/mutation/html/*"
       - "coverage/*"
       - "unit-test-reports/*"
+    on:
+      branch: master
 addons:
   sonarcloud:
     organization: "infosec812-github" # the key of the org you chose at step #3
