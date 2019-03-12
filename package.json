@@ -1,8 +1,16 @@
 {
   "name": "npm-audit-ci-wrapper",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
-  "keywords": ["npm", "audit", "ci", "security", "dependencies", "jenkins", "travis"],
+  "keywords": [
+    "npm",
+    "audit",
+    "ci",
+    "security",
+    "dependencies",
+    "jenkins",
+    "travis"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "jest --collect-coverage",
@@ -10,8 +18,12 @@
     "stryker": "node_modules/stryker-cli/bin/stryker-cli run"
   },
   "jest": {
-    "testPathIgnorePatterns": ["<rootDir>/.stryker-tmp/"],
-    "testMatch": ["**/?(*.)+(spec|test).[jt]s?(x)"]
+    "testPathIgnorePatterns": [
+      "<rootDir>/.stryker-tmp/"
+    ],
+    "testMatch": [
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ]
   },
   "author": "Deven Phillips <deven.phillips@redhat.com>",
   "repository": {
