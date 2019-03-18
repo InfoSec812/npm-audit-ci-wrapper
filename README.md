@@ -5,6 +5,7 @@
 [![Code Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=coverage)](https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=bugs)](https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper)
 [![Quality](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=sqale_index)](https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper)
+[![Known Vulnerabilities](https://snyk.io/test/github/InfoSec812/npm-audit-ci-wrapper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/InfoSec812/npm-audit-ci-wrapper?targetFile=package.json)
 
 This utility is a wrapper around `npm audit --json` which allows for finer grained control over what
 will cause a CI build to fail. Options include setting the severity threshold and ignoring dev dependencies.
