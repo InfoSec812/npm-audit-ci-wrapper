@@ -25,5 +25,5 @@ addons:
     token: "${SONAR_TOKEN}"
 script:
   - npm run test
-  - sonar-scanner
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi # sonar only on non-PRs
   - npm run stryker
