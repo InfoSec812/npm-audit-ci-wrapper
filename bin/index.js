@@ -27,6 +27,11 @@ if (!check_npm_version()) {
   process.exit(1);
 }
 
+if (threshold === -1) {
+  console.error(`Invalid threshold provided. Threshold must be one of the following: ${validThresholds.join(', ')}`);
+  process.exit(1);
+}
+
 // Build the npm audit command
 command = 'npm audit --json'
 if( registry !== null ) {
