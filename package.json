@@ -36,6 +36,7 @@
     "@stryker-mutator/jest-runner": "^1.0.2",
     "capture-stdout": "^1.0.0",
     "jest": "^24.1.0",
+    "jest-cli": "^24.8.0",
     "jest-html-reporter": "^2.5.0",
     "stryker-cli": "^1.0.0",
     "stryker-jest-runner": "^1.4.1"
