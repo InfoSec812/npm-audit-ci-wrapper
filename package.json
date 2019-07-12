@@ -24,7 +24,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "argv": "0.0.2"
+    "argv": "0.0.2",
+    "cli-table": "^0.3.1"
   },
   "bin": {
     "npm-audit-ci-wrapper": "./bin/index.js"
