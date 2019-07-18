@@ -1,6 +1,6 @@
 {
   "name": "npm-audit-ci-wrapper",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
   "keywords": [
     "npm",
@@ -24,7 +24,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "argv": "0.0.2"
+    "argv": "0.0.2",
+    "cli-table": "^0.3.1"
   },
   "bin": {
     "npm-audit-ci-wrapper": "./bin/index.js"
