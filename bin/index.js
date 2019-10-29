@@ -36,7 +36,7 @@ if (threshold === -1) {
 var command = 'npm';
 var command_args = ['audit', '--json'];
 if ( registry !== null ) {
-  command_args.push(' --registry=' + registry);
+  command_args.push('--registry=' + registry);
 }
 
 var stdout = '';
