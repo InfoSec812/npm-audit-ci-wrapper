@@ -13,3 +13,5 @@ reports/**
 .stryker-tmp/**
 .sonarlint
 .sonarlint/**
+.idea
+.vscode
