@@ -33,7 +33,7 @@ if (threshold === -1) {
 }
 
 // Build the npm audit command
-var command = 'npm';
+var command = /^win/.test(process.platform) ? 'npm.cmd' : 'npm';
 var command_args = ['audit', '--json'];
 if ( registry !== null ) {
   command_args.push('--registry=' + registry);
