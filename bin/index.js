@@ -20,7 +20,7 @@ const { exec, spawn } = require('child_process');
 const { parse_audit_results } = require('../lib/parser');
 const { parse_args, validThresholds, check_npm_version } = require('../lib/parse_args');
 
-const VERSION = '2.4.4';
+const VERSION = '2.5.0';
 
 const { threshold, ignoreDev, json_output, registry, whitelist, version } = parse_args(process.argv);
 
