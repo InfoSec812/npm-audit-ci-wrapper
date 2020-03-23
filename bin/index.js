@@ -20,10 +20,12 @@ const { exec, spawn } = require('child_process');
 const { parse_audit_results } = require('../lib/parser');
 const { parse_args, validThresholds, check_npm_version } = require('../lib/parse_args');
 
+const VERSION = '2.4.4';
+
 const { threshold, ignoreDev, json_output, registry, whitelist, version } = parse_args(process.argv);
 
 if (version) {
-  console.log("npm-audit-ci-wrapper version 2.4.4");
+  console.log(`npm-audit-ci-wrapper version ${VERSION}`);
   process.exit(0);
 }
 
