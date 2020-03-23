@@ -15,12 +15,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+const fs = require('fs');
 const { exec, spawn } = require('child_process');
 const { parse_audit_results } = require('../lib/parser');
 const { parse_args, validThresholds, check_npm_version } = require('../lib/parse_args');
 
-const { threshold, ignoreDev, json_output, registry, whitelist } = parse_args(process.argv);
+const { threshold, ignoreDev, json_output, registry, whitelist, version } = parse_args(process.argv);
+
+if (version) {
+  console.log("npm-audit-ci-wrapper version 2.4.4");
+  process.exit(0);
+}
+
+try {
+  if (!fs.existsSync("./package-lock.json")) {
+    console.log('The "package-lock.json" file does not exist. You MUST run `npm install` BEFORE running `npm-audit-ci-wrapper`');
+    process.exit(4);
+  }
+} catch(err) {
+  console.log('Unable to read "package-lock.json". You MUST run `npm install` BEFORE running `npm-audit-ci-wrapper`');
+  process.exit(5);
+}
 
 if (!check_npm_version()) {
   console.error('NPM Version does not support npm audit. Install a version >= 6.0.0');
