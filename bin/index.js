@@ -65,6 +65,7 @@ const audit_proc = spawn(command, command_args, { stdio: ['ignore', 'pipe', 'pip
 
 let auditData = {};
 
+// Use stream processing of JSON data to be able to handle large data
 audit_proc.stdout
   .pipe(JSONStream.parse())
   .pipe(es.mapSync(function(data) {
