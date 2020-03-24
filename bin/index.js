@@ -15,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const JSONStream = require('JSONStream');
+const es = require('event-stream');
 const fs = require('fs');
 const { exec, spawn } = require('child_process');
 const { parse_audit_results } = require('../lib/parser');
@@ -61,10 +63,13 @@ var stderr = '';
 
 const audit_proc = spawn(command, command_args, { stdio: ['ignore', 'pipe', 'pipe'], detached: false });
 
-audit_proc.stdout.on('data', (data) => {
-  var holder = stdout;
-  stdout = holder.concat(data);
-});
+let auditData = {};
+
+audit_proc.stdout
+  .pipe(JSONStream.parse())
+  .pipe(es.mapSync(function(data) {
+    auditData = data;
+  }));
 
 audit_proc.stderr.on('data', (data) => {
   var holder = stderr;
@@ -72,7 +77,7 @@ audit_proc.stderr.on('data', (data) => {
 });
 
 audit_proc.on('close', (exit_code) => {
-  const { exitCode, cliOutput } = parse_audit_results(stderr, stdout, threshold, ignoreDev, json_output, whitelist);
+  const { exitCode, cliOutput } = parse_audit_results(stderr, auditData, threshold, ignoreDev, json_output, whitelist);
   console.log(cliOutput);
   process.exit(exitCode);
 });
