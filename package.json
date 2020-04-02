@@ -1,6 +1,6 @@
 {
   "name": "npm-audit-ci-wrapper",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
   "keywords": [
     "npm",
@@ -42,6 +42,7 @@
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
     "jest-html-reporter": "^2.6.2",
+    "sonar-scanner": "^3.1.0",
     "stryker-cli": "^1.0.0",
     "stryker-jest-runner": "^1.4.1"
   }
