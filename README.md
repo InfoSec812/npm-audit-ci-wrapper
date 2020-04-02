@@ -22,6 +22,12 @@ OR
 npm install -g npm-audit-ci-wrapper
 ```
 
+OR
+
+```
+npx npm-audit-ci-wrapper@latest
+```
+
 ## Usage
 
 ```
