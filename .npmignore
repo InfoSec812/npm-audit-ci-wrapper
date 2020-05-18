@@ -1,0 +1,13 @@
+**/*.test.js
+test_data
+coverage
+reports
+**/*.md
+sonar-project.properties
+.travis.yml
+.gitignore
+stryker.conf.js
+jest.conf.js
+.idea
+.scannerwork
+.vscode
