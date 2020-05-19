@@ -11,6 +11,10 @@
     "jenkins",
     "travis"
   ],
+  "files": [
+    "bin",
+    "lib"
+  ],
   "main": "index.js",
   "scripts": {
     "audit": "node bin/index.js -t low",
