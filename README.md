@@ -30,29 +30,33 @@ npx npm-audit-ci-wrapper@latest
 ## Usage
 
 ```
-Usage: index.js [options]
+Usage: npm-audit-ci-wrapper [options]
 
 	--help, -h
-			Displays help information about this script
-			'index.js -h' or 'index.js --help'
+		Displays help information about this script
+		'npm-audit-ci-wrapper -h' or 'npm-audit-ci-wrapper --help'
 
 	--threshold, -t
-			The threshold at which the audit should fail the build (low, moderate, high, critical)
-			'npm-audit-ci-wrapper --threshold=high' or 'npm-audit-ci-wrapper -t high'
+		The threshold at which the audit should fail the build (low, moderate, high, critical)
+		'npm-audit-ci-wrapper --threshold=high' or 'npm-audit-ci-wrapper -t high'
 
 	--ignore-dev-dependencies, -p
-			Tells the tool to ignore dev dependencies and only fail the build on runtime dependencies which exceed the threshold
-			'npm-audit-ci-wrapper -p' or 'npm-audit-ci-wrapper --ignore-dev-dependencies'
+		Tells the tool to ignore dev dependencies and only fail the build on runtime dependencies which exceed the threshold
+		'npm-audit-ci-wrapper -p' or 'npm-audit-ci-wrapper --ignore-dev-dependencies'
 
 	--json, -j
-			Do not fail, just output the filtered JSON data which matches the specified threshold/scope (useful in combination with `npm-audit-html`)
-			'npm-audit-ci-wrapper --threshold=high -p --json' or 'npm-audit-ci-wrapper -j'
+		Do not fail, just output the filtered JSON data which matches the specified threshold/scope (useful in combination with `npm-audit-html`)
+		'npm-audit-ci-wrapper --threshold=high -p --json' or 'npm-audit-ci-wrapper -j'
 
 	--registry, -r
-			Submit the dependency report to and get the list of vulnerabilities from this npm registry. Useful when your default npm regsitry (i.e. npm config set registry) does not support the npm audit command.
-			'npm-audit-ci-wrapper --registry=https://registry.npmjs.org/'
+		Set an alternate NPM registry server. Useful when your default npm regsitry (i.e. npm config set registry) does not support the npm audit command.
+		'npm-audit-ci-wrapper --registry=https://registry.npmjs.org/'
 
 	--whitelist, -w
-			Whitelist the given dependency at the specified version or all versions (Can be specified multiple times).
-			'npm-audit-ci-wrapper -w https-proxy-agent' or 'npm-audit-ci-wrapper -w https-proxy-agent:*' or 'npm-audit-ci-wrapper --whitelist=https-proxy-agent:1.0.0'
+		Whitelist the given dependency at the specified version or all versions (Can be specified multiple times).
+		'npm-audit-ci-wrapper -w https-proxy-agent' or 'npm-audit-ci-wrapper -w https-proxy-agent:*' or 'npm-audit-ci-wrapper --whitelist=https-proxy-agent:1.0.0'
+
+	--version, -v
+		Output the version of npm-audit-ci-wrapper and then exit
+		'npm-audit-ci-wrapper -v' or 'npm-audit-ci-wrapper --version'
 ```
