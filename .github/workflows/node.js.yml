@@ -35,7 +35,7 @@ jobs:
     - name: fix code coverage paths
       working-directory: ./coverage
       run: |
-        sed -i 's/\/home\/runner\/work\/<your-repo-name>\/<your-repo-name>\//\/github\/workspace\//g' coverage/lcov.info
+        sed -i 's/\/home\/runner\/work\/npm-audit-ci-wrapper\/npm-audit-ci-wrapper\//\/github\/workspace\//g' lcov.info
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.3
       if: ${{ matrix.node-version == '14.x' }}
