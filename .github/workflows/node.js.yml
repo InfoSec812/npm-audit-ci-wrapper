@@ -30,6 +30,8 @@ jobs:
     - run: npm test
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.3
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: Publish to NPM registry
       if: ${{ startsWith(github.ref, 'refs/tags/v') }}
       run: npm publish
