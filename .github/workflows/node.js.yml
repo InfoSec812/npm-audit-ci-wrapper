@@ -30,8 +30,14 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - run: npm install
     - run: npm test
+    - run: npm run stryker
+    - name: fix code coverage paths
+      working-directory: ./coverage
+      run: |
+        sed -i 's/\/home\/runner\/work\/<your-repo-name>\/<your-repo-name>\//\/github\/workspace\//g' coverage/lcov.info
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.3
+      if: ${{ matrix.node-version == 14.x }}
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
