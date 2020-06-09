@@ -6,6 +6,7 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
+    tags: v*
   pull_request:
     branches: [ master ]
 
@@ -30,7 +31,7 @@ jobs:
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.3
     - name: Publish to NPM registry
-      if: ${{ github.head_ref != "" }}
+      if: ${{ startsWith(${GITHUB_REF##*/}, 'v') }}
       run: npm publish
       env:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_REGISTRY_TOKEN }}
