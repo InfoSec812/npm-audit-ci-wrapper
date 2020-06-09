@@ -21,6 +21,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -36,7 +38,11 @@ jobs:
         sed -i 's/\/home\/runner\/work\/<your-repo-name>\/<your-repo-name>\//\/github\/workspace\//g' coverage/lcov.info
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.3
+<<<<<<< HEAD
       if: ${{ matrix.node-version == '14.x' }}
+=======
+      if: ${{ matrix.node-version == 14.x }}
+>>>>>>> 2571acfad7bc5f2cf1c1746c4894c2133935711d
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
