@@ -6,7 +6,7 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
-    tags: v*
+    tags: [v**]
   pull_request:
     branches: [ master ]
 
@@ -21,6 +21,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -28,8 +30,15 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - run: npm install
     - run: npm test
+    - run: npm run stryker
+      if: ${{ matrix.node-version == '14.x' }}
+    - name: fix code coverage paths
+      working-directory: ./coverage
+      run: |
+        sed -i 's/\/home\/runner\/work\/npm-audit-ci-wrapper\/npm-audit-ci-wrapper\//\/github\/workspace\//g' lcov.info
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.3
+      if: ${{ matrix.node-version == '14.x' }}
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
