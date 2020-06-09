@@ -16,10 +16,9 @@
 const { readFileSync } = require('fs');
 
 test('Verify that version from package.json matches version in the code', () => {
-  const packageJson = readFileSync('package.json', 'utf8');
-  const packageVersion = JSON.parse(packageJson).version;
   const testRegEx = new RegExp(`VERSION = '([0-9.]+)'`);
   const indexJs = readFileSync('bin/index.js', 'utf8');
   const indexJsVersion = indexJs.match(testRegEx);
-  expect(indexJsVersion[0]).toBe(`VERSION = '${packageVersion}'`);
+  const packageJsonVersion = require('../package.json').version;
+  expect(indexJsVersion[0]).toBe(`VERSION = '${packageJsonVersion}'`);
 });
