@@ -1,6 +1,6 @@
 {
   "name": "npm-audit-ci-wrapper",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A wrapper for 'npm audit' which can be configurable for use in a CI/CD tool like Jenkins",
   "keywords": [
     "npm",

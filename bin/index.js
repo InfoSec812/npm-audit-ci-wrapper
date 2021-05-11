@@ -23,6 +23,10 @@ const { parse_audit_results } = require('../lib/parser');
 const VERSION = require('../package.json').version;
 const { parse_args, validThresholds, check_npm_version } = require('../lib/parse_args');
 
+process.stderr.write("WARNING: NPM Audit CI Wrapper is no longer maintained.\n");
+process.stderr.write("OPTIONS:\n");
+process.stderr.write("- Use Sonatype's auditjs\n");
+
 const { threshold, ignoreDev, json_output, registry, whitelist, version } = parse_args(process.argv);
 
 if (version) {
