@@ -1,4 +1,8 @@
-# NPM Audit Continuous Integration Wrapper
+# **DEPRECATED** NPM Audit Continuous Integration Wrapper
+
+## Deprecation
+NPM keeps changing the API for NPM Audit and I just don't have the time or inclination to keep chasing their whims. I highly recommend that you switch to using
+Sonatype's [auditjs](https://github.com/sonatype-nexus-community/auditjs#readme) which is far more stable and not dependent on NPM's Audit API and instead uses the Sonatype OSSI registry which covers a lot more detail. I have already switch all of my projects. If you would like to take over ownership of this repository and the NPM package, I would be willing to hand it over to someone who proves their intent by submitting a pull-request to handle the latest NPM Audit API.
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.zanclus%3Anpm-audit-ci-wrapper&metric=coverage)](https://sonarcloud.io/dashboard?id=com.zanclus%3Anpm-audit-ci-wrapper)
